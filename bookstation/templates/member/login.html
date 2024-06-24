@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>로그인</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 템플릿과 bootstrap 사용을 위한 코드 -->    
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/LogService.css' %}">
+    <!--===============================================================================================-->
+</head>
+<body class="animsition">
+    <div class="container">
+        <!-- 사진 LogService.css 20번째 라인 -->
+        <div class="image"></div>
+        <!-- 입력폼 -->
+        <div class="form">
+            <!-- <h1>BookStation</h1> -->
+            <a href="main.html"><img src="{% static 'images/icons/Logo-1.png' %}" alt="logo" class="logo"></a>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input type="text" id="userId" class="form-control" name="member_id" placeholder="아이디 입력">
+                <input type="password" id="userPwd" class="form-control" name="member_password" placeholder="비밀번호 입력">
+                <button id="btn-login" class="flex-c-m stext-101 cl0 size-116 bg3 bor4 hov-btn3 p-lr-15 trans-04 pointer" type="submit">로그인</button>
+            </form>
+
+            <!-- 메시지 표시 -->
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="links">
+                <a href="../register">회원가입</a>
+                <span>|</span>
+                <a href="../memberFind">아이디 찾기</a>
+                <span>|</span>
+                <a href="../psChange">비밀번호 찾기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 템플릿과 bootstrap, jQuery 사용을 위한 코드 -->    
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <script src="{% static 'vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script>
+    $(function(){
+        $('#btn-login').click(function(event){
+            // 폼 제출을 막기 위해 기본 이벤트를 중단
+            event.preventDefault();
+            
+            // 아이디와 비밀번호 입력 값 확인
+            var userId = $('#userId').val();
+            var userPwd = $('#userPwd').val();
+
+            // 입력 값이 없는 경우 알림 표시 및 폼 제출 방지
+            if(userId.trim() === "" && userPwd.trim() === ""){
+                alert("아이디와 비밀번호를 입력해주세요.");
+            }
+            else if(userId.trim() === ""){
+                alert("아이디를 입력해주세요.");
+            }
+            else if(userPwd.trim() === ""){
+                alert("비밀번호를 입력해주세요.");
+            }
+            else{
+                // 입력 값이 모두 있는 경우 폼 제출
+                $(this).closest('form').submit();
+            }
+        });
+    });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

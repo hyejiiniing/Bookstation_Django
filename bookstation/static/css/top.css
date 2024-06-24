@@ -1,0 +1,125 @@
+@charset "EUC-KR";
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+.container { /* main.css 106라인 */
+	max-width: 1300px
+}
+
+/* 탑 바 */
+.top-bar {
+	background-color: #112C1D;
+}
+.right-top-bar a:hover {
+	color: #B5EEDF;
+}
+.right-top-bar a {
+	font-family: 'SUITE-Regular';
+	font-size: 15px;
+	line-height: 1.8;
+		
+	height: 100%;
+	color: #b2b2b2;
+	border-right: none;
+}
+.right-top-bar a:first-child {
+	border-left: none;
+}
+/* 상단 메뉴 */
+.main-menu > li > a {
+	font-family: 'SUITE-Regular';
+	font-size: 22px;
+	font-weight:bold;
+}
+.sub-menu-table {	
+	position: absolute;
+	top:0;
+	left:100%;
+	min-width: 534px;
+	max-width: 675px;
+	background-color: #fff;
+
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+
+	box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+	-o-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+	-ms-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+			
+	visibility: hidden;
+	opacity: 0; 
+}
+.sub-menu {
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	-o-box-shadow:none;
+	-ms-box-shadow:none;
+		  	
+	transition: none;
+	-webkit-transition: none;
+  	-o-transition: none;
+  	-moz-transition: none;
+}
+.sub-menu a {
+	font-family: 'SUITE-Regular';
+}
+.main-menu > li:hover .sub-menu-table {
+  	visibility: visible;
+  	opacity: 1;
+}
+.main-menu > li:hover .sub-menu {
+  	visibility: visible;
+  	opacity: 1;
+  	position:relative;
+}
+.main-menu > li .sub-menu-table {
+  	top:100%;
+  	left: 0;
+}
+.main-menu > li .sub-menu {
+  	top:100%;
+  	left: 0;
+}
+/* 검색창 */
+.wrap-icon-header > .searchbar {
+	border-radius:80px;
+	border:1px solid #013220;
+	width:500px;height:40px;
+	background:none;
+	padding:7px 5px 7px 5px
+}
+.wrap-icon-header > .searchbar form {
+	float:left
+}
+.wrap-icon-header > .searchbar select {
+	background:none;
+	border:0px;
+	float:left;
+	margin-left:5px;
+	font-family: 'SUITE-Regular';
+}
+.wrap-icon-header > .searchbar input {
+	background:none;
+	font-size:15px;
+	float:left;
+	margin-left:10px
+}
+
+/* 장바구니 */
+.mtext-103 {
+	font-family: 'SUITE-Regular';
+}

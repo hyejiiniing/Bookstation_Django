@@ -1,0 +1,287 @@
+/* 폰트 정보 */
+@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+.mtext-112, .stext-115, .mtext-106 {
+	font-family: 'SUITE-Regular';
+}
+table {
+    border-collapse: collapse;
+}
+.row {
+	margin: 0px;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 서브메뉴 */
+/* 카테고리 서브메뉴 */
+.list-group-item {
+	font-family: 'SUITE-Regular';
+	padding: 4px 10px;
+	font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 책 검색 서브메뉴 */
+.side-menu-search * {
+	font-family: 'SUITE-Regular';
+}
+
+.side-menu-search h4 {
+	font-weight: 800;
+}
+.side-menu-search input[type="text"] {
+	width: calc(100% - 10px);
+	border: 1px solid #b2b2b2;
+	margin: 0px 10px 7px 0px;
+	border-radius: 4px
+}
+
+.side-menu-search .sm-inner-ul li {
+	padding: 0px 10px;
+}
+
+.side-menu-search input[type="checkbox"], label {
+	display:inline-block;
+	margin-bottom:5px;
+}
+
+.side-menu-search .btn {
+	clear: both;
+	float:right;
+	font-family: 'SUITE-Regular';
+    background-color: white; /* 배경색을 흰색으로 설정 */
+    color: #285a35; /* 글자색을 초록색으로 설정 */
+    border: 1px solid #285a35; /* 테두리를 초록색으로 설정 */
+    text-align: center; /* 가운데 정렬 */
+    text-decoration: none; /* 밑줄 없음 */
+    font-size: 13px; /* 글꼴 크기 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    box-sizing: border-box;
+    padding: 2px 6px;
+    background: #fff;
+}
+
+.side-menu-search .btn:hover {
+    background-color: #45a049; /* 호버 시 배경색 변경 */
+    color: white; /* 호버 시 글자색 변경 */
+    border: 1px solid #285a35; /* 호버 시 테두리 색 변경 */
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 본문상단 Filter - 공통 */
+/* 정렬 필터 - 판매량순, 출간일순, 등록일순, 상품명순, 평점순, 리뷰순, 저가격순, 고가격순 */
+.filter-menu-desktop {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.filter-menu {
+  list-style-type: none;
+  margin: 0;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+.filter-menu > li {
+  display: block;
+  position: relative;
+  padding: 5px 10px 5px 10px;
+}
+.filter-menu > li > a {
+  font-family: 'SUITE-Regular';
+  font-size: 14px;
+  font-weight:500;
+  color: #333;
+  padding: 5px 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+.filter-menu > li.active-menu > a {
+  color: #6c7ae0;
+}
+
+/* 전체선택, 장바구니담기 버튼 */
+.bl-btn-grp {
+	clear: both;
+    float: right;
+    margin-top:5px
+}
+.bl-btn-grp .btn {
+    font-family: 'SUITE-Regular';
+    font-weight:600;
+    background-color: white; /* 배경색을 흰색으로 설정 */
+    color: #285a35; /* 글자색을 초록색으로 설정 */
+    border: 1px solid #285a35; /* 테두리를 초록색으로 설정 */
+    text-align: center; /* 가운데 정렬 */
+    text-decoration: none; /* 밑줄 없음 */
+    font-size: 12px; /* 글꼴 크기 */
+    margin: 3px 2px; /* 바깥쪽 여백 설정 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    box-sizing: border-box;
+    padding: 3px 6px;
+    background: #fff;
+    margin-top: 3px;
+}
+.bl-btn-grp .btn:hover {
+    background-color: #45a049; /* 호버 시 배경색 변경 */
+    color: white; /* 호버 시 글자색 변경 */
+    border: 1px solid #285a35; /* 호버 시 테두리 색 변경 */
+}
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 베스트셀러 본문 상단 */
+/* 주간, 월간, 역대, 신간, 어제, 스테디 */
+.bestseller-tab {
+	border-bottom: 1px solid #eeeeee;
+}
+.bestseller-tab a {
+	font-family: 'SUITE-Regular';
+	color: #1d1d1d;
+	font-size:20px;
+	padding: 5px 20px;
+	margin: 0px 5px;
+}
+.bestseller-tab a:hover {
+	background-color: #eeeeee;
+}
+/* 날짜 설정 */
+.sel-date span {
+	font-family: 'SUITE-Regular';
+	font-size: 22px;
+	font-weight: 600;
+	padding: 5px;
+}
+.sel-date select {
+	padding: 0px 3px;
+	margin: 0px 3px;
+	border-radius: 6px;
+	font-family: 'SUITE-Regular';
+}
+/* 설명 텍스트 */
+.count-txt > span {font-size: 12px}
+.count-txt > hr {margin: 0px}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 책리스트 본문 - bookbody */
+/* 공통 */
+.highlight {
+	color:#ff0080
+}
+.book-title {
+	font-weight: 600;
+	font-size: 22px;
+	color: #498b49;
+}
+.book-price {
+	font-weight: 600;
+	font-size: 20px;
+	color: #498b49;
+}
+.booklist-table, .top3books {
+	width: 100%;
+	padding: 20px;
+	padding-top: 5%
+}
+.booklist-table td, .top3books td {
+	padding: 20px 10px;
+	font-family: 'SUITE-Regular';
+	vertical-align: top;
+}
+.booklist-table .btn {
+    float: right;
+    background-color: white;
+    color: #285a35;
+    border: 1px solid #285a35; /* 테두리를 초록색으로 설정 */
+    padding: 15px 20px; /* 안쪽 여백 설정 */
+    text-align: center; /* 가운데 정렬 */
+    text-decoration: none; /* 밑줄 없음 */
+    font-size: 18px; /* 글꼴 크기 */
+    font-weight:600;
+    margin: 6px 2px; /* 바깥쪽 여백 설정 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+.booklist-table .btn:hover {
+    background-color: #45a049; /* 호버 시 배경색 변경 */
+    color: white; /* 호버 시 글자색 변경 */
+    border: 1px solid #285a35; /* 호버 시 테두리 색 변경 */
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 상위 3권 */
+.top3books {
+	width: 100%;
+	padding: 20px;
+	padding-top: 5%
+}
+.t3-number {
+	font-size: 20px;
+	font-weight: 800;
+	color: #ff0080;
+}
+.top3books img {
+	max-height: 250px;
+	display: flex;
+	margin: auto;
+}
+.top3books input[type="checkbox"] {
+	display:inline-block;
+}
+.top3books .btn-group-t3 {
+	display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 15px
+}
+.top3books .btn {
+    background-color: white;
+    color: #285a35;
+    border: 1px solid #285a35; /* 테두리를 초록색으로 설정 */
+    padding: 10px 30px; /* 안쪽 여백 설정 */
+    text-align: center; /* 가운데 정렬 */
+    text-decoration: none; /* 밑줄 없음 */
+    font-size: 18px; /* 글꼴 크기 */
+    font-weight:600;
+    margin: 6px 2px; /* 바깥쪽 여백 설정 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    border-radius: 8px; /* 모서리 둥글게 */
+}
+.top3books .btn:hover {
+    background-color: #45a049; /* 호버 시 배경색 변경 */
+    color: white; /* 호버 시 글자색 변경 */
+    border: 1px solid #285a35; /* 호버 시 테두리 색 변경 */
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 나머지 17권 */
+.booklist-table img {
+	max-width: 152px;
+}
+.booklist-table .book-info-cell {
+	padding: 20px;
+	padding-top: 8%;
+}
+.booklist-table .btn-grp {
+	vertical-align: middle;
+}

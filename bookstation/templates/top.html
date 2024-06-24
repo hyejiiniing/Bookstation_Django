@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/top.css' %}">
+    <style>
+        /* 검색창에 키워드 입력하면 배경이 바뀌는 것 때문에 추가한 스타일 속성 */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* 검색어 페이지로 이동할 때 검색어를 유지하는 코드 */
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParam = new URL(location.href).searchParams;
+            const searchWord = urlParam.get('searchWord');
+            const searchBar = document.getElementById('topSearchBar');
+            
+            if (searchWord == null) {
+                searchBar.value = '';
+            } else {
+                searchBar.value = searchWord;
+            }
+
+            const searchField = "{{ searchField|default_if_none:'' }}";
+            if (searchField) {
+                document.querySelector(`select[id=searchField] option[value=${searchField}]`).selected = true;
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <!-- Topbar -->
+            <div class="top-bar">
+                <div class="content-topbar flex-sb-m h-full container">
+                    <div class="left-top-bar"></div>
+                    <div class="right-top-bar flex-w h-full">
+                    {% if user.is_authenticated %}
+                        <a class="flex-c-m trans-04 p-lr-25" style="padding: 0 10px; color: #B5EEDF">안녕하세요 {{ user.username }}님 :)</a>
+                        <a class="flex-c-m trans-04 p-lr-25" style="padding: 0 10px; color: #B5EEDF">보유포인트 [ {{ user.profile.member_point|intcomma }} point ]</a>
+                        <a class="flex-c-m trans-04 p-lr-25" style="padding: 0 10px; color: #B5EEDF">내등급 [ {{ user.profile.grade_name }} &nbsp;<img src="{% static 'images/icons/'|add:user.profile.grade_name|add:'.png' %}" alt="ICON-PAY" style="width: 20px;">&nbsp;]</a>
+                        <a href="{% url 'logout' %}" class="flex-c-m trans-04 p-lr-25">로그아웃</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="flex-c-m trans-04 p-lr-25">로그인</a>
+                        <a href="{% url 'register' %}" class="flex-c-m trans-04 p-lr-25">회원가입</a>
+                    {% endif %}
+                        <a href="{% url 'mypage' %}" class="flex-c-m trans-04 p-lr-25">마이페이지</a>
+                        <a href="{% url 'customer_service' %}" class="flex-c-m trans-04 p-lr-25">고객센터</a>
+                        <a href="{% url 'cart' %}" class="flex-c-m trans-04 p-lr-25">장바구니</a>
+                        <a href="{% url 'detail' %}" class="flex-c-m trans-04 p-lr-25">공지사항</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 상단메뉴 -->
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+                    <!-- Logo desktop -->        
+                    <a href="{% url 'main' %}" class="logo">
+                        <img src="{% static 'images/icons/Logo-1.png' %}" alt="IMG-LOGO">
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="#">카테고리</a>
+                                <div>
+                                    <table class="sub-menu-table">
+                                        <tr>
+                                            <td>
+                                                <ul class="sub-menu">
+                                                    <li><a href="{% url 'category' %}?category=01&sort=sales&pageNum=1">소설</a></li>
+                                                    <li><a href="{% url 'category' %}?category=02&sort=sales&pageNum=1">시/에세이</a></li>
+                                                    <li><a href="{% url 'category' %}?category=03&sort=sales&pageNum=1">인문</a></li>
+                                                    <li><a href="{% url 'category' %}?category=04&sort=sales&pageNum=1">요리</a></li>
+                                                    <li><a href="{% url 'category' %}?category=05&sort=sales&pageNum=1">건강</a></li>
+                                                    <li><a href="{% url 'category' %}?category=06&sort=sales&pageNum=1">취미/실용/스포츠</a></li>
+                                                    <li><a href="{% url 'category' %}?category=07&sort=sales&pageNum=1">경제/경영</a></li>
+                                                    <li><a href="{% url 'category' %}?category=08&sort=sales&pageNum=1">자기계발</a></li>
+                                                    <li><a href="{% url 'category' %}?category=09&sort=sales&pageNum=1">정치/사회</a></li>
+                                                    <li><a href="{% url 'category' %}?category=10&sort=sales&pageNum=1">역사/문화</a></li>
+                                                    <li><a href="{% url 'category' %}?category=11&sort=sales&pageNum=1">예술/대중문화</a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="sub-menu">
+                                                    <li><a href="{% url 'category' %}?category=12&sort=sales&pageNum=1">중/고등학생참고서</a></li>
+                                                    <li><a href="{% url 'category' %}?category=13&sort=sales&pageNum=1">외국어</a></li>
+                                                    <li><a href="{% url 'category' %}?category=14&sort=sales&pageNum=1">과학</a></li>
+                                                    <li><a href="{% url 'category' %}?category=15&sort=sales&pageNum=1">여행</a></li>
+                                                    <li><a href="{% url 'category' %}?category=16&sort=sales&pageNum=1">컴퓨터/IT</a></li>
+                                                    <li><a href="{% url 'category' %}?category=17&sort=sales&pageNum=1">잡지</a></li>
+                                                    <li><a href="{% url 'category' %}?category=18&sort=sales&pageNum=1">청소년</a></li>
+                                                    <li><a href="{% url 'category' %}?category=19&sort=sales&pageNum=1">초등참고서</a></li>
+                                                    <li><a href="{% url 'category' %}?category=20&sort=sales&pageNum=1">유아(0~7세)</a></li>
+                                                    <li><a href="{% url 'category' %}?category=21&sort=sales&pageNum=1">어린이(초등)</a></li>
+                                                    <li><a href="{% url 'category' %}?category=22&sort=sales&pageNum=1">만화</a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li>
+                            <li>|</li>
+                            <li>
+                                <a href="{% url 'bestseller' %}?sort=weekly&category=&year=2024&month=05&weeks=4">베스트셀러</a>
+                            </li>
+                            <li>|</li>
+                            <li>
+                                <a href="{% url 'newbook' %}?sort=new">신간도서</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m">
+                        <!-- 추가: 검색창 -->
+                        <div class="searchbar stext-101" style="width: 75%">
+                            <form name="searchForm" style="width: 100%" action="{% url 'searchbook' %}" method="get">
+                                <select name="searchField" id="searchField">
+                                    <option value="all">전체</option>
+                                    <option value="bookName">도서 제목</option>
+                                    <option value="bookAuthor">작가</option>
+                                    <option value="bookPublisher">출판사</option>
+                                </select>
+                                <input id="topSearchBar" name="searchWord" type="text" style="border: 0px; width: 70%">
+                                <input name="sort" value="sales" type="hidden">
+                                <input name="category" value="" type="hidden">
+                                <span class="search-icon"><a href="javascript:void(0);" style="color: black;" onclick="document.forms['searchForm'].submit();"><i class="zmdi zmdi-search hov-cl1 trans-04 icon-header-item p-l-10 p-r-10"></i></a></span>
+                            </form>
+                        </div>
+                        <!-- 장바구니 아이콘 -->
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>    
+        </div>
+    </header>
+    
+    <!-- Cart -->
+    {% include 'minicart.html' %}
+</body>
+</html>

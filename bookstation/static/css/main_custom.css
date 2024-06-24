@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* main.css에 추가로 넣거나 변경한 부분. (작성자 - 이지은) */
+/* 폰트 관련 */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Diphylleia-Regular';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_JAMO@1.0/Diphylleia-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'OG_Renaissance_Secret-Rg';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/OG_Renaissance_Secret-Rg.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'MapoDacapo';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoDacapoA.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'ChosunCentennial';
+	src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'MBC1961GulimM';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.stext-101, .stext-103, .stext-104, .stext-105, .stext-115, .mtext-108, .ltext-104, .ltext-105 {
+	font-family: 'SUITE-Regular';
+}
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 전체적인 디자인 */
+.container { /* main.css 106라인 */
+	max-width: 1300px
+}
+hr {
+	margin: 0px;
+}
+.body{
+	font-family: 'SUITE-Regular';
+}
+/* bg 클래스 main.css 2640~2649 라인까지 있음. 0~9까지 있음 */
+.bg10 {background-color: #4BA7AE;}
+.bg11 {background-color: #8AB261;}
+.bg12 {background-color: #112C1D;}
+.bg13 {background-color: rgb(218, 232, 217);}
+.bg14 {background-color: #25423E;}
+/* cl 클래스 main.css 2123~2135 라인까지 있음. 0~12까지 있음 */
+.cl13 {color: #881F1D;}
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 슬라이더 */
+.item-slick1 {
+	height: 600px;
+}
+.item-slick1 > .container {
+	padding-left:100px; /* 슬라이더 상품 소개 글씨 왼쪽 간격 */
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 상품목록 */
+/* 회원님을 위한 추천만 */
+.recom-con {
+	max-width: calc(50vw + 730px);
+	border-radius: 400px 0px 0px 400px;
+	
+	float: right;
+	padding-left: 180px;
+	width: 100%;
+}
+.recom-con > .container {
+	max-width: 1100px;
+	clear: both;
+	float: left;
+}
+.recom-con h3 {
+	font-family: 'MBC1961GulimM';
+	text-shadow: 3px 3px 1px #70a56b;
+	position: relative;
+	left: -100px;
+}
+.tab01 .nav-link.active {
+	background:transparent;
+}
+.tab01 .nav-link {
+	font-family: 'SUITE-Regular';
+}
+.tab01 .nav-tabs {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	align-items: left;
+	border: none;
+}
+.book-title {
+	font-weight: 600;
+}

@@ -1,0 +1,491 @@
+/* -----------------추가--------------------------*/
+
+  .inblist {
+    border: 1px solid #000000; /* 테두리 스타일과 색상 지정 */
+    padding: 10px; /* 테두리와 내용 사이의 간격 지정 */
+    height:500px;
+  
+  }
+  .eventbot{
+    color:black;
+  }
+  .page {
+    position:relative;
+    float:right;
+    right:295px;
+    margin-top:50px;
+    color:black;
+  }
+  .page li a {
+    color:black;
+  }
+  .header {
+    text-align:center;
+  }
+  .tableNotice {
+    border:1px solid black;
+  }
+  /* -----------------5/7 추가--------------------------*/
+  
+  /* -----------------style2--------------------------*/
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 10px;
+  }
+  
+  ul, li {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+ 
+  .board_list {
+    width: 100%;
+    border-top: 2px solid #000;
+  }
+  
+  .board_list > div {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+  }
+  
+  .board_list > div.top {
+    border-bottom: 1px solid #999;
+  }
+  
+  .board_list > div:last-child {
+    border-bottom: 1px solid #000;
+  }
+  
+  .board_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  
+  .board_list > div.top > div {
+    font-weight: 600;
+  }
+  
+  .board_list .num {
+    width: 10%;
+  }
+  
+  .board_list .title {
+    width: 70%;
+    text-align: center;
+    margin-bottom:-22px;
+  }
+  
+  .board_list .top .title {
+    text-align: center;
+  }
+  
+  .board_list .writer {
+    width: 10%;
+  }
+  
+  .board_list .date {
+    width: 10%;
+  }
+  
+  .board_page {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+  }
+  
+  .board_page a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    line-height: 100%;
+  }
+  
+  .board_page a.bt {
+    padding-top: 10px;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+  }
+  
+  .board_page a.num {
+    padding-top: 9px;
+    font-size: 1.4rem;
+  }
+  
+  .board_page a.num.on {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+  }
+  
+  .board_page a:first-child {
+    border-left: 1px solid #ddd;
+  }
+  /* -----------------공지사항게시판--------------------------*/
+  .customerTitle {
+    font-size: 20px;
+    font-weight: bold;
+    word-spacing: -4px;
+    letter-spacing: -2px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .customerTitle .titleSub {
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 7px;
+    word-spacing: -1px;
+    letter-spacing: 0;
+    color: #666;
+  }
+  div, li, td, th, input, textarea, select {
+    font-size: 15px;
+    font-family: 'Malgun Gothic', 'Noto Sans KR', 'dotum', 'Helvetica';
+    line-height: 18px;
+    color: #505050;
+    text-align: left;
+  }
+  #userCounsel .cont {
+    background: #fff;
+    padding: 0;
+  }
+  #userCounsel > div {
+    font-size: .75rem;
+    line-height: 1.6;
+    letter-spacing: -.3px;
+    word-spacing: -.3px;
+  }
+  #userCounsel .cont .box1 {
+    
+    border-bottom: 1px solid #c4bdb4;
+    margin-top: 20px;
+    background: #fff;
+    margin-bottom: 8px;
+    clear: both;
+  }
+  table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    padding: 0px;
+  }
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+  .cont .box1 .tableNotice tr th {
+    border: 1px solid #dcdcdc;
+    background-color: #f9f8f5;
+    color: #725830;
+    line-height: 16px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+  }
+  .cont .box1 .tableNotice tr td.txtTH1 {
+    vertical-align: middle;
+    height: 45px;
+    color: #725830;
+    font-size: 15px;
+    line-height: 140%;
+    font-weight: bold;
+    word-spacing: -3px;
+    border: 1px solid #dcdcdc;
+    padding-left:10px;
+  }
+  #userCounsel .cont .box1 .tableNotice tr td.txtTH {
+    vertical-align: middle;
+    height: 28px;
+    color: #725830;
+    line-height: 14px;
+    font-size: 13px;
+    border: 1px solid #dcdcdc;
+    padding-left:10px;
+  }
+  .listLook {
+    
+    margin: 5px auto;
+    position: relative;
+    z-index: 10000;
+  }
+  .listLook p a span {
+    display: inline-block;
+    padding: 6px 0;
+    text-align: center;
+    color: #746752;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #c9c0b2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .listLook .left {
+    float: left;
+  }
+  .listLook .right {
+    float: right;
+  }
+  .p.right {
+    text-align: center;
+  }
+  .P {
+    padding: 0px;
+    margin: 0px;
+    word-break: keep-all;
+    letter-spacing: -.5px;
+    word-spacing: -0.5px;
+    line-height: 1.6;
+  }
+  /* ------------------ 마이리뷰페이지 --------------------*/
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .tabs button {
+    background: #e0e0e0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .tabs button.active {
+    background: #007acc;
+    color: white;
+  }
+  
+  .content {
+    display: none;
+  }
+  
+  .content.active {
+    display: block;
+  }
+  
+  .filter-options {
+    margin: 20px 0;
+  }
+  
+  .filter-options select {
+    margin-right: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .action-button {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .action-button.delete {
+    background-color: #d9534f;
+  }
+  
+  /*------------------------------리뷰작성페이지----------------------------*/
+  .star_rating {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    flex-direction: row;
+    justify-content: space-between; /* 수정 */
+    align-items: center; /* 추가 */
+  }
+  
+  .star_rating .star {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    display: inline-block;
+    background: url('../images/star_off.png') no-repeat;
+    background-size: 100%;
+    box-sizing: border-box;
+  
+  }
+  
+  .star_rating .star.on {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    display: inline-block;
+    background: url('../images/star_on.png') no-repeat;
+    background-size: 100%;
+    box-sizing: border-box;
+  
+  }
+  
+  .star_box {
+    width: 370px;
+    box-sizing: border-box;
+    display: block; /* 수정 */
+    margin: 15px 0;
+    background: #F3F4F8;
+    border: 0;
+    border-radius: 10px;
+    height: 170px;
+    resize: none;
+    padding: 15px;
+    font-size: 13px;
+    font-family: sans-serif;
+    position: absolute;
+    left:330px;
+    top:333px;
+  }
+  
+  .btn02 {
+    width: 70px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    max-height: 50px;
+    padding: 7px 0;
+    font-size: 13px;
+    text-align: center;
+    background: bisque;
+    position:relative;
+    left:530px;
+    top:-80px;
+  }
+  .btn03 {
+    width: 60px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    max-height: 50px;
+    padding: 7px 0;
+    font-size: 13px;
+    text-align: center;
+    background: bisque;
+    position:relative;
+    left:610px;
+    top:-112px;
+  }
+  .bookimg {
+    position: relative;
+    display: inline-block; /* 수정 */
+    box-sizing: border-box;
+  }
+  .booktitle {
+      position:relative;
+      left:330px;
+      top:-300px;
+      font-size:30px;
+  }
+  .star {
+      position: relative;
+      left:347px;
+      top:-280px;
+  }
+  /* 추가(목록,<,>) */
+  .btnList {
+      width:50px;
+  }
+  .btnLeft {
+      width:30px;
+  }
+  .btnRight {
+      width:30px;
+  }
+  .find-btn1{
+      position: relative;
+      top:50px;
+    display :inline-block;
+      border:solid 1px black;
+      margin-left:5px;
+  }
+  /* 5/1 리뷰 페이지 추가*/
+  /* 탭 메뉴 영역 */
+  .tabs {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      margin-top: 20px;
+    }
+  
+    .tabs button {
+      background: #e0e0e0;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  
+    .tabs button.active {
+      background: #007acc;
+      color: white;
+    }
+  
+    .content {
+      display: none;
+    }
+  
+    .content.active {
+      display: block;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+  
+    .table th, .table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+  
+    .action-button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  
+    .action-button.delete {
+      background-color: #d9534f;
+    }
+  /* 콤보박스 */
+  .form-container {
+    display: flex;
+    align-items: center;
+  } 
+  .change {
+  	background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+  }
+  .cancel {
+  	background-color: #d9534f;
+  	color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+  }

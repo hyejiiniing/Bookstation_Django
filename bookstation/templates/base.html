@@ -1,0 +1,55 @@
+{% comment '기본 html'%}
+<!-- /templates/base.html -->
+{% endcomment %}
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>{% block title %}장고페이지연습 {% endblock %}</title>
+<!-- 불러오는 구문 사용 -->
+<style>
+table {	width : 100%; 	border-collapse: collapse;  }
+th,td {
+	border : 3px solid #bcbcbc;
+	text-align: center;
+	padding: 8px;
+}
+th { background-color: #B7F0B1;     color : #353535;     }
+td { background-color: #F2F2F2;}
+caption {	color : #111111;  font-size: 20px;
+	background-color: #FFFFFF;  }
+input[type=text],input[type=password],textarea {
+	width:100%;
+}
+
+thead {  background-color:#cecece;     }
+.content { max-width:500px;
+            margin: auto;
+            padding:10px;
+        }
+
+.header {  text-align: center;    }
+.board {  width: 100%   }
+.even_bgcolor {  background-color:#e8efff;   }
+.pagination {  display: inline;    }
+.current {   font-weight: bold;    }
+a {    text-decoration: none;   text-align: center;   }
+.abutton {  background-color: #e6e6ff;
+            color: #7b7b7b;
+            font-size: small;
+        }
+</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<table>
+<tr><td colspan="3" style="text-align:right">
+<tr><td width="15%" valign="top">
+  <a href="/member/main">회원관리</a><br>
+  <a href="/board/list">게시판</a><br>
+</td><td colspan="2" style="text-align: left; vertical-align: top">
+  {% block content %} {% endblock %}
+{# 이부분만 추가해서 변경이 되도록 설정  #}
+</td></tr>
+<tr><td colspan="3">KIC캠퍼스</td></tr>
+</table>
+</body>
+</html>

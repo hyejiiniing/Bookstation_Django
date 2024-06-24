@@ -1,0 +1,128 @@
+@charset "EUC-KR";
+
+.input-group {
+		display:inline-flex; /* 요소들을 수평 정렬 */
+		align-items:center; /* 요소들을 수직 정렬 */
+		gap:13px; /* 요소들 사이의 간격 */
+		margin-bottom:9px; /* 아래쪽 여백 */
+	}
+.size-point1 {
+	width:160px;
+	height:45px;
+}
+.size-point2 {
+	width:120px;
+	height:45px;
+}
+.smaller-size {
+	width:55px; /* 원하는 폭으로 설정 */
+	height:34px;
+	padding-left:10px; /* 패딩 조정으로 내부 여백 줄이기 */
+	padding-right:10px;
+	border:1px solid #ccc; /* 테두리 추가 */
+	margin-bottom:7px;
+}
+.smaller-size1 {
+	width: 70px; 
+	height: 34px;
+	padding-left: 10px; 
+	padding-right: 10px;
+	border: 1px solid #ccc; 
+	margin-bottom:7px;
+}
+.smaller-size2 {
+	width:120px; 
+	height:40px;
+	padding-left:10px;
+	padding-right:10px;
+	border:1px solid #ccc; 
+}
+.smaller-size3 {
+	width:320px; 
+	height:40px;
+	padding-left:10px; 
+	padding-right:10px;
+	border:1px solid #ccc; 
+}
+.search-box{
+	border:1px solid #ccc; 
+	z-index:1000; /* z-index로 다른 요소들보다 위 */
+    width:434px; /* 모달 창의 너비 */
+	height:340px;
+	padding-left:22px;
+    /* padding:20px; 내부 여백 */
+    background:white; /* 배경색 */
+}
+.modal-backdrop {
+	display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 전체 화면을 덮음 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    z-index: 999; /* 모달 창 아래 위치 */
+}
+.modal-order {
+	display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 중앙에 위치 */
+	text-align:center;
+    top: 50%; /* 수직 중앙 정렬 */
+    left: 50%; /* 수평 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    z-index: 1000; /* 배경보다 위 */
+    background: white; /* 모달 배경색 */
+    padding: 20px; /* 내부 여백 */
+    border:none; /* 테두리 선 제거 */
+    border-radius: 8px; /* 모서리 곡률 */
+    box-shadow: none; /* 그림자 효과 제거 */
+    width: 434px; /* 모달 창 너비 */
+    height: 120px; /* 모달 창 높이 */
+}
+.table-shopping-cart .table_cart {
+	height: 100px;
+}
+.table-shopping-cart .table_cart td {
+	padding-bottom:7px;
+}
+.table-shopping-cart .table_cart td.column-1 {
+	padding-bottom:7px;
+}
+.back-box {
+	min-width:163px;
+	height:38px;
+	margin-right:15px;
+}		
+.bank-transfer-info {
+	display: none; /* 초기 상태에서 숨김 */
+}
+.text-addr {
+	font-size:9pt; /* 포인트 단위로 글씨 크기 설정 */
+	color: blue; /* 파란색으로 설정 */
+	margin-left:7px;
+	margin-bottom:5px;
+}
+.font-10{
+	font-size:10pt;
+}
+
+/* completed.jsp */
+.row {
+   text-align: center;
+}
+.name {
+   font-size: 25px;
+   /* color: black; */
+   font-weight: bold;
+}
+.nim {
+   font-size: 25px;
+   font-weight: bold;
+}
+.text {
+   font-size: 14px;
+   font-weight: bold;
+}
+#logingo {
+   margin-top: 18px;
+}	

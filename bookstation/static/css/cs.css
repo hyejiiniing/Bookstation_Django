@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/* 외부css(영풍문고) */
+#faqBox {
+    clear: both;
+    /* margin-top: 0 !important; */
+	margin-top: 10px;
+}
+#faqBox .cont {
+    width: 93%;
+	margin: 0 auto;
+}
+#faqBox .cont p {
+    padding: 3px 0 10px 0;
+}
+#faqBox #faqSearch {
+    background: #45a049;
+    padding: 5px 40px 5px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+	justify-content: center
+}
+#faqBox #faqSearch #faq_title {
+    padding-bottom: 5px;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: #fffae8;
+    margin-right: 10px;
+}
+#faqBox #faqSearch input {
+    border: 1px solid #f1e9dc;
+    width: 420px;
+    height: 30px;
+    vertical-align: middle;
+    text-indent: 5px;
+}
+/* /외부css(영풍문고) */
+/* 외부템플릿css(테라피아) */
+.feature .feature-item {
+    position: relative;
+    display: flex;
+    border: 1px solid #45a049;
+    border-radius: 12px;
+    background: #faf9fb;
+    transition: 0.5s;
+}
+.feature .feature-item::before {
+    width: 0;
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.feature .feature-item:hover::before {
+    width: 100%;
+    background: #45a049;
+}
+.feature .feature-item .feature-icon {
+    display: inline-flex;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.feature .feature-item:hover .feature-icon {
+    position: relative;
+    z-index: 2;
+}
+.feature .feature-item:hover .feature-content {
+    position: relative;
+    color: #faf9fb;
+    z-index: 2;
+}
+.feature .feature-item:hover .feature-content h5 {
+    color: #faf9fb;
+}
+/* /외부템플릿css(테라피아) */
+/* 커스텀css */
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+P {
+    padding: 0px;
+    margin: 0px;
+    word-break: keep-all;
+    letter-spacing: -.5px;
+    word-spacing: -0.5px;
+    line-height: 1.6;
+}
+.col-12{
+	display: flex;
+	justify-content: center;
+}
+.m-r--5 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.bor7 {
+    width: 170px;
+    height: 40px;
+	margin: 10px 15px 10px 10px;
+	font-size: 15px;
+}
+/* /커스텀css */

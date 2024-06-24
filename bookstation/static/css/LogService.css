@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+/* 폰트 */
+@font-face {
+	font-family: 'SUITE-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+* {
+	font-family: 'SUITE-Regular';
+}
+
+/* 영훈님 제작 페이지 관련 css */
+/* 로그인, 회원가입, 아이디/비번찾기 - 고양이 있는 페이지 전부 */
+	body {
+		margin: 0;
+		padding: 0;
+		background-color: #f0f0f0;
+	}
+
+	.container {
+		max-width: 100vw;
+		display: flex;
+		align-items: center; /* 수직정렬 */
+		justify-content: center; /* 수평정렬 */
+		height: 100vh; /* 높이를 뷰포트의 100%로 설정, 화면 높이 전체를 사용 */
+		padding: 0;
+		margin: 0;
+	}
+	.image {
+		/*flex: 1;  이미지가 왼쪽 공간 전체를 사용하게 해주는 코드 */
+		text-align: left; /* 이미지를 왼쪽 정렬 */
+		/* margin-right: 60px; */
+		background-image: url(../images/cat2.jpg);  /* 고양이 사진을 배경으로 */
+		background-size: cover;  /* 비율을 유지하면서 확대 축소 됨 */
+		background-repeat: no-repeat;  /* 반복 없음 */
+  		background-position: center center;  /* 이미지가 확대 축소 될 때 중심 */
+		/*width: 100%;  이미지를 가로로 100% 표시 */
+		width: 70vw; /* 이미지가 화면 높이 전체를 사용 */
+		height: 100vh;
+	}
+	/* 모든 페이지 form 태그 */
+	.form, .agreeform, .basicform, .shippingform {
+		flex: 1; /* 입력폼이 오른쪽 공간 전체를 사용하게 해주는 코드 */
+		max-width: 400px; /* 최대 넓이를 400px로 설정 */
+		padding: 20px;
+		background-color: #fff;
+		border-radius: 8px; /* 입력폼 테두리를 둥글게 설정 */
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 입력폼 주위에 그림자 생성 */
+		margin: auto;
+	}
+	/* 모든 페이지 h3 태그 - form 제목 */
+	.form h3, .agreeform h3, .basicform h3, .shippingform h3 {
+		margin-bottom: 20px;
+		text-align: center;
+		color: #333;
+	}
+	/* 모든 페이지 input 태그 */
+	#userId,
+	#userPwd,
+	#rePwd,
+	#userName,
+	#addr2,
+	#addr3,
+	#phone,
+	#userEmail,
+	#birth,
+	#addr,
+	#username,
+	#email {
+		width: 100%;
+		height: 50px;
+		padding: 10px;
+		margin-bottom: 15px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+	/* 로그인 페이지 */
+	/* 로고 이미지 크기 및 위치조절 */
+	.logo {
+		margin: 0 auto;
+		margin-bottom: 20px;
+		max-width: 60%;
+		height: auto;
+	}
+	/* 입력폼 크기,모양,위치 */
+
+	/* 링크 위치 */
+	.links {
+		text-align: center;
+		margin-top: 15px;
+	}
+	/* 링크 스타일 */
+	.links a {
+		color: gray;
+		text-decoration: none;
+	}
+	/* | */
+	.links span {
+		margin: 0 5px;
+	}
+	
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+	/* 아이디찾기 */
+	/* 버튼크기 조절 및 가운데정렬 */
+	#loginGo {
+		width: 90%;
+		margin: 10px auto; 
+	}
+	#pwChange {
+		width: 90%;
+		margin: 0 auto; 
+	}
+	
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+	/* 회원가입 */
+	#userName,
+	#userEmail,
+	#addr2,
+	#addr3,
+	#phone {
+		height: 45px;
+		margin-bottom: 10px;
+	}
+	#birth, #addr {
+		width: 61%;
+		height: 45px;
+		margin-bottom: 9px;
+	}
+	#birth, #addr {margin-bottom: 4px;}
+	/* text박스와 옆에 버튼오게하기 */
+	.buttondiv input[type="text"],
+	.buttondiv input[type="button"],
+	.buttondiv button {
+		display: inline-block;
+		vertical-align: middle;
+		margin-bottom: 9px; 
+	}
+
+	/* 라디오 버튼을 버튼 모양으로 바꾸는 코드 */
+	.radio-button {
+		display: none; /* 라디오 버튼 숨기기 */
+	}
+	.radio-button + label { /* 버튼 스타일링 */
+		padding: 10px 16px;
+		font-size: 16px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	.radio-button:checked + label { /* 라디오 버튼이 체크되었을 때의 스타일링 */
+		background-color: #333;
+		color: #fff;
+		border-color: #333;
+	}
+
+	/* 우편번호 검색 */
+	.input-group {
+		display:inline-flex; /* 요소들을 수평 정렬 */
+		align-items:center; /* 요소들을 수직 정렬 */
+		gap:13px; /* 요소들 사이의 간격 */
+		margin-bottom:9px; /* 아래쪽 여백 */
+	} 
+	.smaller-size3 {
+		width:320px; 
+		height:40px;
+		padding-left:10px; 
+		padding-right:10px;
+		border:1px solid #ccc; 
+	}
+	.text-addr {
+		font-size:9pt; /* 포인트 단위로 글씨 크기 설정 */
+		color: blue; /* 파란색으로 설정 */
+		margin-left:7px;
+		margin-bottom:5px;
+	}
+	.font-10{
+		font-size:10pt;
+	}
+	.search-box{
+		border:1px solid #ccc; 
+		z-index:1000; /* z-index로 다른 요소들보다 위 */
+	    width:434px; /* 모달 창의 너비 */
+		height:340px;
+		padding-left:22px;
+	    background:white; /* 배경색 */
+	}
+	input, label {
+		display:inline-block;
+	}
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+	/* 아아디 찾기 */
+	
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */

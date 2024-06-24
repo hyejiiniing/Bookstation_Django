@@ -1,0 +1,26 @@
+@charset "EUC-KR";
+
+.logo-b {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	height: 65%;
+	margin-right: 55px;
+}
+.logo-b img {
+	max-width: 50%;
+	max-height: 50%;
+}
+.btm-info span {
+	color: white;
+	font-size: 13px;
+}
+.bottom-faq div {
+	margin-bottom:10px
+}
+.bottom-faq a {
+	width:48%; float:left;margin-right:2%;
+}

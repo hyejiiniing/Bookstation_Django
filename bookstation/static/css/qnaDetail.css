@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.button-container {
+	text-align: center; /* 버튼을 수평 가운데 정렬 */
+	margin: 20px;
+}
+.button {
+	display: inline-block; /* 인라인 요소로 설정하여 나란히 정렬 */
+	margin: 0 10px; /* 버튼 사이의 간격 조절 */
+}
+.opposite-button {
+	background-color: white; /* 배경색을 흰색으로 설정 */
+	color: #285a35; /* 글자색을 초록색으로 설정 */
+	border: 1px solid #285a35; /* 테두리를 초록색으로 설정 */
+	padding: 5px 20px; /* 안쪽 여백 설정 */
+	text-align: center; /* 가운데 정렬 */
+	text-decoration: none; /* 밑줄 없음 */
+	display: inline-block; /* 인라인 블록 요소 */
+	font-size: 12px; /* 글꼴 크기 */
+	margin: 4px 2px; /* 바깥쪽 여백 설정 */
+	cursor: pointer; /* 커서 포인터로 변경 */
+	border-radius: 5px; /* 모서리 둥글게 */
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* 그림자 효과 */
+}
+.opposite-button:hover {
+	background-color: #45a049; /* 호버 시 배경색 변경 */
+	color: white; /* 호버 시 글자색 변경 */
+	border: 1px solid #285a35; /* 호버 시 테두리 색 변경 */
+}

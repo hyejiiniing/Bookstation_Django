@@ -1,0 +1,49 @@
+/*
+기능 : 유효성검사 후 출력메세지에 대한 css
+작성자 : 조영훈
+작성날짜 : 2024.05.04
+*/
+
+/*
+    통과, 오류메세지 스타일
+*/
+ .valid-message1,
+ .valid-message2,
+ .valid-message3 {
+    color: #4431bf;
+    display: none;
+    font-size: small;
+}
+.valid1 ~ .valid-message1 {
+    display: block;
+}
+.valid2 ~ .valid-message2 {
+    display: block;
+}
+.valid3 ~ .valid-message3 {
+    display: block;
+}
+
+.invalid-message1,
+.invalid-message2,
+.invalid-message3,
+.invalid-message4 {
+    color: #c10e0e;
+    display: none;
+    font-size: small;
+}
+
+.invalid1 ~ .invalid-message1 {
+    display: block;
+}
+.invalid2 ~ .invalid-message2 {
+    display: block;
+}
+.invalid3 ~ .invalid-message3 {
+    display: block;
+} 
+.invalid4 ~ .invalid-message4 {
+    display: block;
+} 
+
+
