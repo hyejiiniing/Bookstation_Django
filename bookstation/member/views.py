@@ -118,6 +118,15 @@ def update_password(request):
             messages.error(request, '비밀번호가 일치하지 않습니다.')
     return redirect('pwChange', member_id=member_id)
 
+def adminMember(request):
+    allMemList = Member.objects.all()  # 모든 회원을 가져옴, 실제 로직에 맞게 수정
+    sort = request.GET.get('sort', 'all')
+    pagingHtml = ""  # 페이징 로직 추가 필요
+    return render(request, 'member/adminMember.html', {'allMemList': allMemList, 'sort': sort, 'pagingHtml': pagingHtml})
+
+def adminDetail(request):
+    # 뷰 로직
+    return render(request, 'member/adminDetail.html')
 
 # 아이디 체크 
 def check_id(request):

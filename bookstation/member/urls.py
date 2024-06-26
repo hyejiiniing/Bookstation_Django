@@ -12,6 +12,10 @@ urlpatterns = [
     path('idSearch/<str:member_name>/<str:member_id>/<str:reg_date>/', views.idSearch, name='idSearch'), # 아이디확인
     path('pwChange/<str:member_id>/', views.pwChange, name='pwChange'), # 비밀번호찾기
     path('update_password/', views.update_password, name='update_password'), # 비밀번호 재설정
+    
+    path('adminMember/', views.adminMember, name='adminMember'), # 회원관리
+    path('adminDetail/', views.adminDetail, name='adminDetail'),
+    
     path('main/', views.main, name='main'), # 메인페이지
     path('', views.index, name='index'), # 메인 2
     # 추가 ('요청명령어/<자료형(str or int,,):전달할 매개변수명>')
