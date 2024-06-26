@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>카카오페이</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 템플릿과 bootstrap 사용을 위한 코드 -->    
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!--===============================================================================================-->
+</head>
+<body class="animsition">
+    {% include 'top.html' %}
+
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="main.do" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<span class="stext-109 cl4">  
+				Order
+			</span>
+		</div>
+	</div>
+
+    <form class="bg0 p-t-75 p-b-85" id="cartForm" action="order" method="GET">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50 text-center">
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+                        <h1 class="col-12 text-center my-5">KAKAO PAY</h1>
+                        <button class="btn btn-warning">카카오페이로 결제하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% include 'bottom.html' %}
+</body>
+</html>

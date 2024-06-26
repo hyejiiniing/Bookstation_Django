@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>주문</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   {% load static %}
+   {% load humanize %}
+   {% load custom_filters %}
+<!--===============================================================================================-->
+   <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+   <link rel="stylesheet" type="text/css" href={% static "vendor/bootstrap/css/bootstrap.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "fonts/iconic/css/material-design-iconic-font.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "fonts/linearicons-v1.0.0/icon-font.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "vendor/animate/animate.css" %}>   
+   <link rel="stylesheet" type="text/css" href={% static "vendor/css-hamburgers/hamburgers.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "vendor/animsition/css/animsition.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "vendor/select2/select2.min.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "vendor/perfect-scrollbar/perfect-scrollbar.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "css/util.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
+   <link rel="stylesheet" type="text/css" href={% static "css/cart.css" %}>
+<!--===============================================================================================-->
+</head>
+<body>
+	 <!-- top -->
+      <div style="height:124px">
+        {% include 'top.html' %}
+      </div>
+      
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="main.do" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<span class="stext-109 cl4">  
+				Order
+			</span>
+		</div>
+	</div>
+	
+	<!-- 에러 메시지 표시 -->
+    <c:if test="${not empty errorMessage}">
+        <div class="error-message">
+            ${errorMessage}
+        </div>
+    </c:if>
+
+	<!-- 상품확인 -->
+	<form action="{% url 'kakao_pay_request' %}" method="POST">
+    {% csrf_token %}
+    <div class="bg0 p-t-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-7 m-lr-auto m-b--20">
+                    <div class="m-r--38 m-lr-0-xl">
+                        <div class="wrap-table-shopping-cart">
+                            <table class="table-shopping-cart">
+                                <tr class="table_head">
+                                    <th class="column-1">상품확인</th>
+                                    <th class="column-2" style="padding-left:90px;">상품명</th>
+                                    <th class="column-3" style="padding-left:45px;">가격</th>
+                                    <th class="column-4">수량</th>
+                                    <th class="column-5">총 상품금액</th> 
+                                </tr>
+                                
+								{% for item in cartList %}
+                                    <tr class="table_cart">
+                                        <td class="column-1">
+                                            <div class="how-itemcart1">
+                                                <img src="{% static 'images/books/' %}{{ item.isbn }}.jpg" alt="IMG">
+                                            </div>
+                                        </td>
+                                        <td class="column-2">{{ item.book_name }}</td>
+                                        <td class="column-3">{{ item.book_price }}원</td>
+                                        <td class="column-4">{{ item.bookcount }}권</td>
+                                        <td class="column-5" >{{ item.bookcount|multiply:item.book_price|format_currency }}</td>
+                                    </tr>
+                                    <input type="hidden" name="item_name" value="{{ item.book_name }}">
+                                    <input type="hidden" name="item_price" value="{{ item.book_price }}">
+								{% endfor %}
+                            </table>
+                        </div>
+
+                        <!-- 장바구니 돌아가기 -->
+                        <div class="flex-w flex-sb-m bor15 p-t-7 p-b-4 p-lr-15-sm">
+                            <div class="flex-w flex-m m-tb-5 input-group">
+                            <input type="hidden" name="totalPrice" value="50000">
+                               <span class="m-l-40">총 결제 예상 금액 : <fmt:formatNumber value="${param.totalPrice - param.usePoint}" pattern="###,### 원"/></span>
+                               <!-- <a href="cart.do" class="flex-c-m stext-101 cl2 back-box bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-3 m-300">
+                                    장바구니로 돌아가기
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- 배송지 입력 -->
+	<section class="bg0 p-t-104 p-b-116">
+		<div class="container">
+			<div class="flex-w flex-tr">
+				
+				<input type="hidden" name="orderState" value="주문">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">					
+						<h4 class="mtext-105 cl2 txt-center p-b-30 p-t-0">배송지 정보</h4>
+						<div>
+							<!-- 배송방법 -->
+							<h6 class="m-b-6">배송 방법</h6>
+							<div class="input-group">
+								<input type="radio" name="shippingOption1" value="일반택배" id="standard-shipping" checked>
+								<label for="standard-shipping" class="m-t-8">일반택배</label>
+								<input type="radio" name="shippingOption1" value="우체국 택배" id="postal-shipping">
+								<label for="postal-shipping" class="m-t-8">우체국 택배</label>
+							</div>
+							
+							<!-- 배송지 선택 -->
+							<h6 class="m-b-10 m-t-10">배송지 선택</h6>
+							<div class="input-group">
+								<input type="radio" value="새주소입력" checked>
+								<label class="m-t-8">새주소입력</label>
+								<input type="radio" value="최근배송지">
+								<label class="m-t-8">최근배송지</label>
+								<input type="radio" value="회원정보동일">
+								<label class="m-t-8">회원정보동일</label>		
+							</div>
+
+							<!-- 주문자 정보 -->
+							
+							<h6 class="m-b-10 m-t-10">수령인 이름</h6>
+							<div class="m-b-10 how-pos4-parent input-group">
+								<input class="stext-111 cl2 plh3 smaller-size1" name="shipping_name" type="text" id="order_name">
+							</div>
+
+							<!-- 연락처 -->
+							<h6 class="m-b-10 m-t-10">휴대 전화번호</h6>
+							<div class="input-group">
+								<div class="how-pos4-parent">
+									<input class="stext-111 cl2 plh3 smaller-size2" name="shipping_phone" type="text" id="phone_num">
+								</div>
+								
+							</div>
+
+							<!-- 주소 -->
+							<h6 class="m-b-10 m-t-10">주소</h6>
+							<div class="m-b-10 how-pos4-parent input-group">
+								<input name="shippingAddr1" class="stext-111 cl2 plh3 smaller-size2" type="text" id="memberAddr1" placeholder="우편번호">
+								<div class="cl2 hov-cl1 trans-04 p-r-11 ">
+									<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="flex-c-m stext-101 cl2 size-112 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
+								</div>
+							</div>
+							<div class="m-b-10 how-pos4-parent">
+								<input name="shippingAddr2" class="stext-111 cl2 plh3 smaller-size3" type="text" id="memberAddr2" placeholder="도로명주소">
+							</div>
+							<div class="m-b-10 how-pos4-parent">
+								<input name="shippingAddr3" class="stext-111 cl2 plh3 smaller-size3" type="text" id="memberAddr3" placeholder="상세주소">
+							</div>
+							 
+							<!-- 배송 상세 정보 -->
+							<div class="m-b--40">
+								
+								<div class="input-group m-t-15">
+									<h6>요청사항</h6>
+									<input type="text" name="shippingOption2" class="addr-line smaller-size3 m-t-7">
+								</div>
+							</div>
+						</div>
+				    </div>
+
+				<!-- 결제 -->
+				<div class="size-210 bor10 flex-w p-lr-73 p-lr-15-lg w-full-md">
+					<div class="container">
+
+						<h4 class="mtext-105 cl2 txt-center p-b-30 p-t-55">
+							결제 정보
+						</h4>
+						
+						<div style="display: flex; height: 70vh; align-items: center; justify-content:center">
+							{% comment %} <form class="bg0 p-t-75 p-b-85" id="cartForm" action="order" method="POST"> {% endcomment %}
+								<div class="row" style="justify-content:center">
+									<h1 class="col-12 text-center my-5">KAKAO PAY</h1>
+									<button class="btn btn-warning">카카오페이로 결제하기</button>
+								</div>
+							{% comment %} </form> {% endcomment %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</form>
+    {% include 'bottom.html' %}
+<!--===============================================================================================-->
+   <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+   <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+
+   <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+   <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+   <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+   <script>
+      $(".js-select2").each(function(){
+         $(this).select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $(this).next('.dropDownSelect2')
+         });
+      })
+   </script>
+
+   <script src="{% static 'vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+
+   <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+   <script>
+      $('.js-pscroll').each(function(){
+         $(this).css('position','relative');
+         $(this).css('overflow','hidden');
+         var ps = new PerfectScrollbar(this, {
+            wheelSpeed: 1,
+            scrollingThreshold: 1000,
+            wheelPropagation: false,
+         });
+
+         $(window).on('resize', function(){
+            ps.update();
+         })
+      });
+
+
+	  $(document).ready(function() {
+        console.log("일단order발동")
+	  });
+
+
+
+   </script>
+   <!-- -->
+   <script src="{% static 'js/main.js' %}"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+   <script src="{% static '//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js' %}"></script>
+</body>
+</html>

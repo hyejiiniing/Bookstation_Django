@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/bootstrap/css/bootstrap.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "fonts/iconic/css/material-design-iconic-font.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "fonts/linearicons-v1.0.0/icon-font.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/animate/animate.css" %}>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href={% static "vendor/css-hamburgers/hamburgers.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/animsition/css/animsition.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/select2/select2.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/perfect-scrollbar/perfect-scrollbar.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "css/util.css" %}>
+	<link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{% static 'http://code.jquery.com/jquery-3.3.1.min.js' %}"></script>
+<title>마이페이지</title>
+<script>
+	$(function(){
+
+	})
+</script>
+</head>
+<body class="animsition">
+	
+	<!-- header -->
+	<div style="height:124px">
+		{% include 'top.html' %}
+	</div>
+
+	<!-- breadcrumb -->
+	<input type="hidden" value="My Page" id="page1" name="page1">
+	<input type="hidden" value="My Page2" id="page2" name="page2">
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="main.do" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<span class="stext-109 cl4">
+				My Page
+			</span>
+		</div>
+	</div>
+
+	<!-- Content page -->
+	<section class="bg0 p-t-52 p-b-20">
+		<div class="container">
+			<div class="row">
+				<!-- 본문 -->
+				<div class="col-md-8 col-lg-9 p-b-80 order-md-2">
+					<div class="p-r-45 p-r-0-lg">
+						<div class="wrap-pic-w how-pos5-parent">
+						</div>
+						<!-- 내정보 -->
+						<div class="con">
+							<div class="title">
+								<h3>My Page</h3>
+								<hr style="border: 1px solid black;">
+							</div>
+							<div class="title">
+								<h3>My Info</h3>
+								<a href="userInfoChange.do" class="btn type01">정보 수정 〉</a>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="250">
+									<col width="750">
+								</colgroup>
+								<tbody>
+								<c:forEach var="member" items="${memberList }">
+									<tr>
+										<th class="normal">휴대폰</th>
+										<td class="p10">${member.member_phone }</td>
+									</tr>
+									<tr>
+										<th class="normal">E-MAIL</th>
+										<td class="p10">${member.member_email }</td>
+									</tr>
+									<tr>
+										<th class="normal">주 소</th>
+										<td class="p10">${member.member_address1 }</td>
+									</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<!-- 내등급 -->
+						<div class="con">
+							<div class="title">
+								<h3>My Grade</h3>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="240">
+									<col width="760">
+								</colgroup>
+								<tbody>
+									<c:forEach var="grade" items="${gradeList }">
+										<c:if test="${loginVO.grade_name eq grade.grade_name }">
+											<tr>
+												<th class="normal" style="padding: 30px 0;"><img src="images/icons/${grade.grade_name }.png" alt="ICON-PAY" style="width: 100px;"></th>
+												<td class="p10">
+													• 매월 1일에 <fmt:formatNumber value="${grade.grade_plusPoint}" pattern="#,##0"/> 포인트 적립 (1천원 이상 포함 2만원 이상 주문시 사용 가능)<br>
+													• 주문금액의 ${grade.grade_ratePoint }% 포인트 적립 (실결제금액 기준)
+													<c:if test="${grade.grade_name=='Bronze' }">
+														<br>• 신규가입시 <fmt:formatNumber value="${grade.grade_plusPoint}" pattern="#,##0"/> 포인트 즉시 적립
+													</c:if>
+												</td>
+											</tr>
+										</c:if>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<!-- 주문/배송 -->
+						<div class="con">
+							<div class="title">
+								<h3>My Order</h3>
+								<a href="myOrder.do" class="btn type01">더보기 〉</a>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="150">
+									<col width="450">
+									<col width="250">
+									<col width="150">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="line">주문번호</th>
+										<th class="bLine line">상품명</th>
+										<th class="line">주문상태</th>
+										<th class="line">주문일</th>
+									</tr>
+									<tr>
+										<td class="center bLine"><a href="order.do" class="blue">2</a></td>
+										<td class="center bLine">사각사각고먐미의저주</td>
+										<td class="money center bLine">고양이보다 강아지</td>
+										<td class="center bLine">2024.04.04</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 반품/교환/취소 -->
+						<div class="con">
+							<div class="title">
+								<h3>My Refund</h3>
+								<a href="myRefund.do" class="btn type01">더보기 〉</a>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="150">
+									<col width="450">
+									<col width="250">
+									<col width="150">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="line">신청번호</th>
+										<th class="bLine line">상품명</th>
+										<th class="line">처리상태</th>
+										<th class="line">등록일</th>
+									</tr>
+									<tr>
+										<td class="center bLine"><a href="refund.do" class="blue">3</a></td>
+										<td class="center bLine">우리학원 인터넷</td>
+										<td class="money center bLine">개떡같이 느리네</td>
+										<td class="center bLine">2024.04.04</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 리뷰 -->
+						<div class="con">
+							<div class="title">
+								<h3>My Review</h3>
+								<a href="myReview.do" class="btn type01">더보기 〉</a>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="150">
+									<col width="450">
+									<col width="250">
+									<col width="150">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="line">등록번호</th>
+										<th class="line">등록제목</th>
+										<th class="bLine line">상품명</th>
+										<th class="line">등록일</th>
+									</tr>
+									<c:choose>
+										<c:when test="${empty reviewList }">
+											<tr>
+												<td class="center" colspan="4">작성한 리뷰가 없습니다</td>
+											</tr>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="qna" items="${reviewList }" varStatus="reviewStatus">
+												<c:if test="${reviewStatus.index<3 }">
+													<tr>
+														<td class="center bLine"><a href="qnaDetail.do?qna_id=${qna_id }" class="blue">${qna.qna_id }</a></td>
+														<td class="center bLine">${qna.qna_title }</td>
+														<td class="money center bLine">${qna.qna_state }</td>
+														<td class="center bLine">${qna.qna_date }</td>
+													</tr>
+												</c:if>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</tbody>
+							</table>
+						</div>
+						<!-- 문의 -->
+						<div class="con">
+							<div class="title">
+								<h3>My QnA</h3>
+								<a href="qna.do" class="btn type01">더보기 〉</a>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="150">
+									<col width="450">
+									<col width="250">
+									<col width="150">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="line">문의번호</th>
+										<th class="bLine line">등록제목</th>
+										<th class="line">처리상태</th>
+										<th class="line">등록일</th>
+									</tr>
+									<c:choose>
+										<c:when test="${empty qnaList }">
+											<tr>
+												<td class="center" colspan="4">작성한 문의가 없습니다</td>
+											</tr>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="qna" items="${qnaList }" varStatus="qnaStatus">
+												<c:if test="${qnaStatus.index<3 }">
+													<tr>
+														<td class="center bLine"><a href="qnaDetail.do?qna_id=${qna.qna_id }" class="blue">${qna.qna_id }</a></td>
+														<td class="center bLine">${qna.qna_title }</td>
+														<td class="money center bLine">${qna.qna_state }</td>
+														<td class="center bLine">${qna.qna_date }</td>
+													</tr>
+												</c:if>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</tbody>
+							</table>
+						</div>
+						<!-- /문의 -->
+					</div>
+				</div>
+				<!-- /본문 -->
+				
+				<!-- 사이드바 -->
+				{% include 'qna/sidebar.html' %}
+				<!-- /사이드바 -->
+				
+			</div>
+		</div>
+	</section>	
+
+	<!-- Footer -->
+	{% include 'bottom.html' %}
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

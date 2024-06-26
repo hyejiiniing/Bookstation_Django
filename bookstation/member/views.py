@@ -6,10 +6,12 @@ from django.http import HttpResponse, HttpResponseRedirect # 응답, 페이지 �
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import get_object_or_404
+
 
 def main(request):
     # response.sendRedirect("member/main.html");
-    return render(request,'member/main.html') # 메인 페이지 이동
+    return render(request,' main.html') # 메인 페이지 이동
 
 def logout(request):
     auth.logout(request) # 로그아웃 -> session.invalidate()
@@ -127,6 +129,13 @@ def adminMember(request):
 def adminDetail(request):
     # 뷰 로직
     return render(request, 'member/adminDetail.html')
+
+# 회원 삭제 
+def delete_member(request):
+    member_id = request.POST.get('member_id')
+    member = get_object_or_404(Member, pk=member_id)
+    member.delete()
+    return redirect('adminMember')  # 삭제 후 이동할 페이지
 
 # 아이디 체크 
 def check_id(request):

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href={% static "images/icons/favicon.png" %}/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/bootstrap/css/bootstrap.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "fonts/iconic/css/material-design-iconic-font.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "fonts/linearicons-v1.0.0/icon-font.min.css" %}>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "vendor/animate/animate.css" %}>
+<!--===============================================================================================-->
+	{% comment %} <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"> {% endcomment %}
+<!--===============================================================================================-->
+	{% comment %} <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"> {% endcomment %}
+<!--===============================================================================================-->
+	{% comment %} <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"> {% endcomment %}
+<!--===============================================================================================-->
+	{% comment %} <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css"> {% endcomment %}
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href={% static "css/util.css" %}>
+	<link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
+<!--===============================================================================================-->
+<script type="text/javascript" src={% static "js/qna.js" %}></script>
+<title>내질문내역</title>
+</head>
+<body class="animsition">
+
+	<!-- header -->
+	<div style="height:124px">
+		<!-- <jsp:include page="top.jsp" flush="false" /> -->
+        {% include 'top.html' %}
+	</div>
+
+	<!-- breadcrumb -->
+	<input type="hidden" value="My Page" id="page1" name="page1">
+	<input type="hidden" value="My QnA" id="page2" name="page2">
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="main.do" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<a href="mypage.do" class="stext-109 cl8 hov-cl1 trans-04">
+				My Page
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<span class="stext-109 cl4">
+				My QnA
+			</span>
+		</div>
+	</div>
+
+	<!-- Content page -->
+	<section class="bg0 p-t-52 p-b-20">
+		<div class="container">
+			<div class="row">
+				<!-- 본문 -->
+				<div class="col-md-8 col-lg-9 p-b-80 order-md-2">
+					<div class="p-r-45 p-r-0-lg">
+						<div class="wrap-pic-w how-pos5-parent"></div>
+						<!-- 문의리스트 -->
+						<div class="con content">
+							<div class="title">
+								<h3>My Page</h3>
+								<hr style="border: 1px solid black;">
+							</div>
+							<div class="title">
+								<h3>My QnA</h3>
+								<a href="qnaWrite.do" class="btn type01">작성하기 〉</a>
+							</div>
+							<table class="mp_table type01">
+								<colgroup>
+									<col width="150">
+									<col width="550">
+									<col width="150">
+									<col width="150">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="line">등록일</th>
+										<th class="line">제목</th>
+										<th class="line">처리상태</th>
+										<th class="bLine line">삭제하기</th>
+									</tr>
+                                    <tr>
+										<td class="center" colspan="4">작성한 문의가 없습니다</td>
+									</tr>
+									<input type="hidden" name="member_id" value="${qna.member_id }">
+									<tr>
+										<td class="center bLine">${qna.qna_date }</td>
+										<td class="center bLine"><a href="qnaDetail.do?qna_id=${qna.qna_id }" class="blue">${qna.qna_title }</a></td>
+										<td class="money center bLine" style="color:#da4445;">${qna.qna_state }</td>
+										<td class="center bLine"><button class="button"><a href="qnaDelete.do?qna_id=${qna.qna_id }" style="color: inherit;">삭제</a></button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- /문의리스트 -->
+					</div>
+					<!-- Pagination -->
+					<div class="flex-c-m flex-w w-full p-t-38">
+						<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">1</a>
+					</div>
+					<!-- /Pagination -->
+				</div>
+				<!-- /본문 -->
+
+				<!-- 사이드바 -->
+				<!-- <jsp:include page="sidebar.jsp" flush="false" /> -->
+				{% include 'qna/sidebar.html' %}
+				<!-- /사이드바 -->
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<!-- <jsp:include page="bottom.jsp"></jsp:include> -->
+    {% include 'bottom.html' %}
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+<!--===============================================================================================-->
+	<script src={% static "vendor/jquery/jquery-3.2.1.min.js" %}></script>
+<!--===============================================================================================-->
+	<script src={% static "vendor/animsition/js/animsition.min.js" %}></script>
+<!--===============================================================================================-->
+	<script src={% static "vendor/bootstrap/js/popper.js" %}></script>
+	<script src={% static "vendor/bootstrap/js/bootstrap.min.js" %}></script>
+<!--===============================================================================================-->
+	<script src={% static "vendor/select2/select2.min.js" %}></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src={% static "vendor/MagnificPopup/jquery.magnific-popup.min.js" %}></script>
+<!--===============================================================================================-->
+	<script src={% static "vendor/perfect-scrollbar/perfect-scrollbar.min.js" %}></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src={% static "js/main.js" %}></script>
+
+</body>
+</html>
