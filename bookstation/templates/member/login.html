@@ -30,6 +30,15 @@
         <div class="form">
             <!-- <h1>BookStation</h1> -->
             <a href="main.html"><img src="{% static 'images/icons/Logo-1.png' %}" alt="logo" class="logo"></a>
+        
+            <!-- 에러 메세지 -->
+            {% if msg %}
+                <p>{{ msg }}</p>
+            {% endif %}
+            {% if errormsg %}
+                <p>{{ errormsg }}</p>
+            {% endif %}
+
             <form action="{% url 'login' %}" method="post">
                 {% csrf_token %}
                 <input type="text" id="userId" class="form-control" name="member_id" placeholder="아이디 입력">
@@ -37,16 +46,6 @@
                 <button id="btn-login" class="flex-c-m stext-101 cl0 size-116 bg3 bor4 hov-btn3 p-lr-15 trans-04 pointer" type="submit">로그인</button>
             </form>
 
-            <!-- 메시지 표시 -->
-            {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                        <div class="alert {{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
             <div class="links">
                 <a href="../register">회원가입</a>
                 <span>|</span>

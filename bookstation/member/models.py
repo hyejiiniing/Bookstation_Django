@@ -19,5 +19,4 @@ class Member(models.Model):
     grade_name = models.CharField(max_length=10, default='Bronze')
 
     def __str__(self):
-        return self.member_id
-
+        return "self.member_id="+self.member_id+", self.member_password="+self.member_password

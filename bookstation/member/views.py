@@ -5,18 +5,14 @@ from . models import Member # Member 테이블 정보 불러옴
 from django.http import HttpResponse, HttpResponseRedirect # 응답, 페이지 이동 클래스
 from django.http import JsonResponse
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import auth # 로그인 인증에 관련됨.
 from django.shortcuts import get_object_or_404
 
-
+# 메인
 def main(request):
-    # response.sendRedirect("member/main.html");
     return render(request,' main.html') # 메인 페이지 이동
 
-def logout(request):
-    auth.logout(request) # 로그아웃 -> session.invalidate()
-    return HttpResponseRedirect("../login/") # 로그인폼 /member/login/
-
+# 로그인
 def login(request):
     if request.method != 'POST':  # GET 요청일 때
         return render(request, 'member/login.html')  # 로그인 폼 이동
@@ -27,17 +23,24 @@ def login(request):
         try:
             member = Member.objects.get(member_id=member_id)
             if member.member_password == member_password:
-                request.session['login'] = member_id  # 로그인 정보 session에 저장
-                return HttpResponseRedirect("../main/")  # 메인 페이지로 리디렉션 (로그인 상태)
+                request.session['login_id'] = member.member_id  # 로그인 정보 session에 저장
+                request.session['login_point'] = member.member_point  # 로그인 정보 session에 저장
+                request.session['login_grade'] = member.grade_name  # 로그인 정보 session에 저장
+                return HttpResponseRedirect("/")  # 메인 페이지로 리디렉션 (로그인 상태)
             else:
                 context = {"msg": "비밀번호가 틀립니다.", "url": "../login/"}
-                return render(request, 'main.html', context)
+                messages.error(request, '비밀번호가 틀렸습니다.')
+                return render(request, 'member/login.html', context)
         except Member.DoesNotExist:
+            messages.error(request, '아이디가 틀렸습니다.')
             return render(request, 'member/login.html', {"errormsg": "아이디가 틀립니다."})
 
-def registerSuccess(request, member_name):
-    return render(request, 'member/registerSuccess.html', {'member_name': member_name})
+# 로그아웃
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("../login/")
 
+# 회원가입
 def register(request):
     if request.method == 'POST':
         member_id = request.POST['member_id']
@@ -70,6 +73,10 @@ def register(request):
     else:
         return render(request, 'member/register.html')
     
+# 회원가입 성공 
+def registerSuccess(request, member_name):
+    return render(request, 'member/registerSuccess.html', {'member_name': member_name})
+
 # 아이디 찾기   
 def memberFind(request):
     if request.method == 'POST':

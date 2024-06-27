@@ -17,9 +17,9 @@ urlpatterns = [
     path('adminDetail/', views.adminDetail, name='adminDetail'),
     path('delete_member/', views.delete_member, name='delete_member'), # 회원 삭제
     
-    path('main/', views.main, name='main'), # 메인페이지
+    path('main/', views.main, name='main'),  # 메인 
     path('', views.index, name='index'), # 메인 2
-    # 추가 ('요청명령어/<자료형(str or int,,):전달할 매개변수명>')
+    
     path('info/<str:id>/', views.info, name='info'),
     path('update/<str:id>/', views.update, name='update'), # 회원수정하기 위해서 계정 id 전달됨
     # 회원탈퇴

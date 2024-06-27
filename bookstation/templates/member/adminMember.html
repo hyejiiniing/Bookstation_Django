@@ -61,6 +61,8 @@
     </script>
 </head>
 <body class="animsition">
+
+    {% include 'top.html' %}
     
     <!-- breadcrumb -->
     <div class="admin-con">
@@ -140,6 +142,9 @@
             </div>
         </div>
     </section>
+
+    <!-- bottom -->
+	{% include 'bottom.html' %}
     <script>
         function deleteMember(memberId) {
             if (confirm('정말로 삭제하시겠습니까?')) {
