@@ -16,6 +16,7 @@ urlpatterns = [
     path('adminMember/', views.adminMember, name='adminMember'), # 회원관리
     path('adminDetail/', views.adminDetail, name='adminDetail'),
     path('delete_member/', views.delete_member, name='delete_member'), # 회원 삭제
+    path('adminDetail/<str:member_id>/', views.admin_detail, name='adminDetail'), # 회원 수정
     
     path('main/', views.main, name='main'),  # 메인 
     path('', views.index, name='index'), # 메인 2

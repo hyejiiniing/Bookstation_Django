@@ -103,8 +103,8 @@ def idSearch(request, member_name, member_id, reg_date):
     }
     return render(request, 'member/idSearch.html', context)
 
+# 비밀번호 찾기
 def pwChange(request, member_id):
-    # 비밀번호 변경 로직을 여기에 추가
     return render(request, 'member/pwChange.html', {'member_id': member_id})
 
 # 비밀번호 변경
@@ -127,15 +127,17 @@ def update_password(request):
             messages.error(request, '비밀번호가 일치하지 않습니다.')
     return redirect('pwChange', member_id=member_id)
 
+# 회원 관리
 def adminMember(request):
     allMemList = Member.objects.all()  # 모든 회원을 가져옴, 실제 로직에 맞게 수정
     sort = request.GET.get('sort', 'all')
     pagingHtml = ""  # 페이징 로직 추가 필요
     return render(request, 'member/adminMember.html', {'allMemList': allMemList, 'sort': sort, 'pagingHtml': pagingHtml})
 
-def adminDetail(request):
-    # 뷰 로직
-    return render(request, 'member/adminDetail.html')
+# 회원 수정
+def admin_detail(request, member_id):
+    # adminDetail 페이지에 필요한 로직을 작성합니다.
+    return render(request, 'adminDetail.html', {'member_id': member_id})
 
 # 회원 삭제 
 def delete_member(request):

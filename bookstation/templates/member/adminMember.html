@@ -120,7 +120,7 @@
                                             <td>{{ mem.grade_name }}</td>
                                         {% endif %}
                                         <td>
-                                            <a class="btn" href="javascript:void(0);" onclick="document.forms['udt{{ mem.member_id }}'].submit();">수정</a>
+                                            <a class="btn" href="{% url 'adminDetail' mem.member_id %}">수정</a>
                                             <a class="btn" href="javascript:void(0);" onclick="deleteMember('{{ mem.member_id }}')">삭제</a>
                                         </td>
                                     </tr>
