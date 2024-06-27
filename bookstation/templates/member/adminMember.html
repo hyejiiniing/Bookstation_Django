@@ -62,7 +62,10 @@
 </head>
 <body class="animsition">
 
-    {% include 'top.html' %}
+    <!-- header -->
+    <div style="height:124px">
+        {% include 'top.html' %}
+    </div>
     
     <!-- breadcrumb -->
     <div class="admin-con">
@@ -101,12 +104,18 @@
                                     <th style="width:15%">가입일</th>
                                     <th style="width:20%">보유 포인트</th>
                                     <th style="width:10%">등급</th>
-                                    <th style="width:15%">수정/삭제</th>
+                                    <th style="width:9.5%">수정/삭제</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for mem in allMemList %}
+                                {% comment %} {% for mem in allMemList %}
                                 <form action="{% url 'adminDetail' %}" name="udt{{ mem.member_id }}" method="post">
+                                    <input type="hidden" name="member_id" value="{{ mem.member_id }}">
+                                </form> {% endcomment %}
+
+                                {% for mem in allMemList %}
+                                <form action="{% url 'adminDetail' member_id=mem.member_id %}" name="udt{{ mem.member_id }}" method="post">
+                                    {% csrf_token %}
                                     <input type="hidden" name="member_id" value="{{ mem.member_id }}">
                                 </form>
                                     <tr>
@@ -136,8 +145,11 @@
                 </div>
                 <!-- 본문 수정 -->
             
+                <div class="flex-c-m flex-w w-full p-t-38">
+                    {{ pagingHtml|safe }}
+                </div>
                 <!-- 사이드바 수정 -->
-                {% comment %} {% include 'adminSidebar.html' %} {% endcomment %}
+                {% include 'member/adminSidebar.html' %}
                 <!-- 사이드바 -->
             </div>
         </div>

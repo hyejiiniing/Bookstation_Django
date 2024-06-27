@@ -33,6 +33,11 @@
 </head>
 <body class="animsition">
 
+    <!-- header -->
+    <div style="height:124px">
+        {% include 'top.html' %}
+    </div>
+
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -60,41 +65,17 @@
                 <div class="col-md-8 col-lg-9 p-b-80 order-md-2">
                     <div class="p-r-45 p-r-0-lg">
                         <!-- 비밀번호 -->
-                        <form action="{% url 'updatePassword' %}" method="post">
-                            {% csrf_token %}
                             <div class="con">
                                 <div class="title">
                                     <h3>회원정보 수정</h3>
                                     <hr style="border: 1px solid black;">
                                 </div>
-                                <div class="title">
-                                    <h3>비밀번호</h3>
-                                </div>
-                                <table class="mp_table type01">
-                                    <colgroup>
-                                        <col width="200">
-                                        <col width="250">
-                                        <col width="200">
-                                        <col width="350">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <th class="normal">비밀번호 변경</th>
-                                            <td colspan="3" class="p10">
-                                                <div class="passwd">
-                                                    <input type="password" name="member_password" id="newPwd" placeholder="새 비밀번호">
-                                                    <input type="password" id="newPwdCheck" placeholder="새 비밀번호 확인">
-                                                    <button id="passwordChangeButton" class="button" style="margin: 0;">변경하기</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </form>
                         <!-- 회원정보 -->
                         <form action="{% url 'userInfoChange' %}" method="post">
                             {% csrf_token %}
+                            <input type="hidden" name="member_id" value="{{ member.member_id }}">
                             <div class="con">
                                 <div class="title">
                                     <h3>회원정보</h3>
@@ -193,8 +174,11 @@
                 </div>
                 <!-- 본문 수정 -->
 
+                <div class="flex-c-m flex-w w-full p-t-38">
+                    {{ pagingHtml|safe }}
+                </div>
                 <!-- 사이드바 수정 -->
-                {% include 'adminSidebar.html' %}
+                {% include 'member/adminSidebar.html' %}
                 <!-- 사이드바 -->
             </div>
         </div>

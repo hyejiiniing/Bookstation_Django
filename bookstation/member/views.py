@@ -135,9 +135,33 @@ def adminMember(request):
     return render(request, 'member/adminMember.html', {'allMemList': allMemList, 'sort': sort, 'pagingHtml': pagingHtml})
 
 # 회원 수정
-def admin_detail(request, member_id):
-    # adminDetail 페이지에 필요한 로직을 작성합니다.
-    return render(request, 'adminDetail.html', {'member_id': member_id})
+def adminDetail(request, member_id):
+    member = get_object_or_404(Member, pk=member_id)
+    return render(request, 'member/adminDetail.html', {'member': member})
+
+# 회원 정보 변경
+def userInfoChange(request):
+    if request.method == 'POST':
+        member_id = request.POST.get('member_id')
+        member_name = request.POST.get('member_name')
+        member_email = request.POST.get('member_email')
+        member_zipcode = request.POST.get('member_zipcode')
+        member_address1 = request.POST.get('member_address1')
+        member_address2 = request.POST.get('member_address2')
+        member_phone = request.POST.get('member_phone')
+
+        member = get_object_or_404(Member, member_id=member_id)
+        member.member_name = member_name
+        member.member_email = member_email
+        member.member_zipcode = member_zipcode
+        member.member_address1 = member_address1
+        member.member_address2 = member_address2
+        member.member_phone = member_phone
+        member.save()
+        
+        return redirect('adminDetail', member_id=member.member_id)  # 변경 후 현재 페이지로 리디렉션
+
+    return render(request, 'member/adminDetail.html')
 
 # 회원 삭제 
 def delete_member(request):
