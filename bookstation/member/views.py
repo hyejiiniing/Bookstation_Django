@@ -129,7 +129,7 @@ def update_password(request):
 
 # 회원 관리
 def adminMember(request):
-    allMemList = Member.objects.all()  # 모든 회원을 가져옴, 실제 로직에 맞게 수정
+    allMemList = Member.objects.all()
     sort = request.GET.get('sort', 'all')
     pagingHtml = ""  # 페이징 로직 추가 필요
     return render(request, 'member/adminMember.html', {'allMemList': allMemList, 'sort': sort, 'pagingHtml': pagingHtml})
