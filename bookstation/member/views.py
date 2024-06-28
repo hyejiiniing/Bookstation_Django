@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib import auth # 로그인 인증에 관련됨.
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator # 페이징 처리
 
 # 메인
 def main(request):
@@ -128,12 +129,33 @@ def update_password(request):
     return redirect('pwChange', member_id=member_id)
 
 # 회원 관리
+# def adminMember(request):
+#     allMemList = Member.objects.all()
+#     sort = request.GET.get('sort', 'all')
+#     pagingHtml = ""  # 페이징 로직 추가 필요
+#     return render(request, 'member/adminMember.html', {'allMemList': allMemList, 'sort': sort, 'pagingHtml': pagingHtml})
+    
 def adminMember(request):
+    login_id = request.session.get('login_id', "")
+    
+    alert_message = ""
+    if login_id != "admin":
+        alert_message = "관리자만 사용할 수 있습니다."
+    
     allMemList = Member.objects.all()
     sort = request.GET.get('sort', 'all')
-    pagingHtml = ""  # 페이징 로직 추가 필요
-    return render(request, 'member/adminMember.html', {'allMemList': allMemList, 'sort': sort, 'pagingHtml': pagingHtml})
-
+    
+    # 페이징 처리 (페이지당 8개)
+    paginator = Paginator(allMemList, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    return render(request, 'member/adminMember.html', {
+        'page_obj': page_obj,
+        'sort': sort,
+        'alert_message': alert_message  # 알림 메시지 전달
+    })
+    
 # 회원 수정
 def adminDetail(request, member_id):
     member = get_object_or_404(Member, pk=member_id)

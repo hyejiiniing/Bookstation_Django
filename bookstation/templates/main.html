@@ -22,6 +22,11 @@
 	<link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
 	<link rel="stylesheet" type="text/css" href={% static "css/main_custom.css" %}>
 </head>
+<script>
+    $(function(){
+        $('a.{{ sort }}').addClass('active-menu')
+    });
+    </script>
 <body class="animsition">
 
 	{% include 'top.html' %}

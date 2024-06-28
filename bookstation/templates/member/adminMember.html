@@ -61,7 +61,6 @@
     </script>
 </head>
 <body class="animsition">
-
     <!-- header -->
     <div style="height:124px">
         {% include 'top.html' %}
@@ -108,12 +107,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% comment %} {% for mem in allMemList %}
-                                <form action="{% url 'adminDetail' %}" name="udt{{ mem.member_id }}" method="post">
-                                    <input type="hidden" name="member_id" value="{{ mem.member_id }}">
-                                </form> {% endcomment %}
-
-                                {% for mem in allMemList %}
+                                {% for mem in page_obj %}
                                 <form action="{% url 'adminDetail' member_id=mem.member_id %}" name="udt{{ mem.member_id }}" method="post">
                                     {% csrf_token %}
                                     <input type="hidden" name="member_id" value="{{ mem.member_id }}">
@@ -134,23 +128,68 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
-                            </tbody>
+                                {% comment %} {% for mem in allMemList %}
+                                <form action="{% url 'adminDetail' %}" name="udt{{ mem.member_id }}" method="post">
+                                    <input type="hidden" name="member_id" value="{{ mem.member_id }}">
+                                </form> {% endcomment %}
+
+                                {% comment %} {% for mem in allMemList %}
+                                <form action="{% url 'adminDetail' member_id=mem.member_id %}" name="udt{{ mem.member_id }}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="member_id" value="{{ mem.member_id }}">
+                                </form>
+                                    <tr>
+                                        <td>{{ mem.member_id }}</td>
+                                        <td>{{ mem.member_name }}</td>
+                                        <td>{{ mem.reg_date }}</td>
+                                        <td>{{ mem.member_point|intcomma }}포인트</td>
+                                        {% if mem.grade_name == 'Inactive' %}
+                                            <td style="color:red;font-weight:bold">{{ mem.grade_name }}</td>
+                                        {% else %}
+                                            <td>{{ mem.grade_name }}</td>
+                                        {% endif %}
+                                        <td>
+                                            <a class="btn" href="{% url 'adminDetail' mem.member_id %}">수정</a>
+                                            <a class="btn" href="javascript:void(0);" onclick="deleteMember('{{ mem.member_id }}')">삭제</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody> {% endcomment %}
                         </table>
                     </div>
 
-                    <!-- 페이징처리 -->
-                    <div class="flex-c-m flex-w w-full p-t-38">
-                        {{ pagingHtml|safe }}
+                    <!-- 페이징 처리 -->
+                    <div class="pagination flex-c-m flex-w w-full p-t-38">
+                        <div style="margin: 5px; display: flex; align-items: center;">
+                           {% if page_obj.has_previous %}
+                           <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page=1">&laquo;</a>
+                           <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                           {% endif %}
+                        </div>
+                        <div style="margin: 5px; display: flex; align-items: center;">
+                           {% for page in page_obj.paginator.page_range %}
+                           {# 현재 페이지 번호를 포함해서 5개씩만 페이지 번호를 표시 #}
+                              {% if page >= page_obj.number|add:'-2' and page <= page_obj.number|add:'2' %}
+                              <span class="{% if page == page_obj.number %}current{% endif %}">
+                                 <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ page }}">{{ page }}</a>
+                              </span>
+                              {# 현재페이지 기준 2페이지만 보여주고 나머지 페이지는 다음블럭에서 보여주기 #}
+                              {% elif page >= page_obj.number|add:'-3' and page <= page_obj.number|add:'3' %}
+                                 ..
+                              {% endif %}
+                           {% endfor %}
+                        </div>
+                        <div style="margin: 5px; display: flex; align-items: center;">
+                           {% if page_obj.has_next %}
+                              <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                              <a class="flex-c-m how-pagination1 trans-04 m-all-7" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                           {% endif %}
+                         </div>
                     </div>
                 </div>
-                <!-- 본문 수정 -->
-            
-                <div class="flex-c-m flex-w w-full p-t-38">
-                    {{ pagingHtml|safe }}
-                </div>
-                <!-- 사이드바 수정 -->
-                {% include 'member/adminSidebar.html' %}
+
                 <!-- 사이드바 -->
+                {% include 'member/adminSidebar.html' %}
             </div>
         </div>
     </section>

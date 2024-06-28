@@ -23,6 +23,7 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.main, name="main"),
+    path('member/', include('member.urls')),
     # path("qna/", include("qna.urls")),
     # path("cart/", include("cart.urls")),
     path("", include("member.urls")),
