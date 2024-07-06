@@ -30,6 +30,16 @@
 <body class="animsition">
 
 	{% include 'top.html' %}
+
+	<!-- 메시지 확인 및 alert 표시 -->
+    <script type="text/javascript">
+        {% if messages %}
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        {% endif %}
+    </script>
+    
 	
 	<!-- Slider -->
 	<!-- 슬라이더 data-apear 속성은 animate.css에서 더 많이 찾아볼 수 있음 -->

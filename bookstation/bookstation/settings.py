@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import pymysql 
 pymysql.install_as_MySQLdb()
-# 추가
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 
 ROOT_URLCONF = "bookstation.urls" # 기본 요청에 해당되는 파일 -> 다른 앱을 등록(갯수만큼 등록시켜준다.)
 

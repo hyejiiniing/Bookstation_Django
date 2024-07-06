@@ -8,7 +8,6 @@ from django.contrib import messages # 알림 메시지 표시
 from django.contrib import auth # 로그인 인증 모듈
 from django.shortcuts import get_object_or_404 # 특정 객체가 존재하지 않을 때 404 에러 반환
 from django.core.paginator import Paginator # 페이징 처리
-# views.py
 
 # 메인
 def main(request):
@@ -133,9 +132,10 @@ def update_password(request):
 def adminMember(request):
     login_id = request.session.get('login_id', "")
     
-    alert_message = ""
     if login_id != "admin":
-        alert_message = "관리자만 사용할 수 있습니다."
+        # 관리자 계정이 아닌 경우, 알림 메시지를 설정하고 메인 페이지로 리디렉션
+        messages.warning(request, "관리자만 사용할 수 있습니다.")
+        return redirect('/')
     
     allMemList = Member.objects.all()
     sort = request.GET.get('sort', 'all')
@@ -148,8 +148,27 @@ def adminMember(request):
     return render(request, 'member/adminMember.html', {
         'page_obj': page_obj,
         'sort': sort,
-        'alert_message': alert_message  
     })
+# def adminMember(request):
+#     login_id = request.session.get('login_id', "")
+    
+#     alert_message = ""
+#     if login_id != "admin":
+#         alert_message = "관리자만 사용할 수 있습니다."
+    
+#     allMemList = Member.objects.all()
+#     sort = request.GET.get('sort', 'all')
+    
+#     # 페이징 처리 
+#     paginator = Paginator(allMemList, 8)
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+    
+#     return render(request, 'member/adminMember.html', {
+#         'page_obj': page_obj,
+#         'sort': sort,
+#         'alert_message': alert_message  
+#     })
     
 # 회원 수정
 def adminDetail(request, member_id):
