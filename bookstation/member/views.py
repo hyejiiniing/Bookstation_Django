@@ -8,6 +8,7 @@ from django.contrib import messages # 알림 메시지 표시
 from django.contrib import auth # 로그인 인증 모듈
 from django.shortcuts import get_object_or_404 # 특정 객체가 존재하지 않을 때 404 에러 반환
 from django.core.paginator import Paginator # 페이징 처리
+# views.py
 
 # 메인
 def main(request):
