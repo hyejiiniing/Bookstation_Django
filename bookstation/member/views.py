@@ -149,26 +149,6 @@ def adminMember(request):
         'page_obj': page_obj,
         'sort': sort,
     })
-# def adminMember(request):
-#     login_id = request.session.get('login_id', "")
-    
-#     alert_message = ""
-#     if login_id != "admin":
-#         alert_message = "관리자만 사용할 수 있습니다."
-    
-#     allMemList = Member.objects.all()
-#     sort = request.GET.get('sort', 'all')
-    
-#     # 페이징 처리 
-#     paginator = Paginator(allMemList, 8)
-#     page_number = request.GET.get('page')
-#     page_obj = paginator.get_page(page_number)
-    
-#     return render(request, 'member/adminMember.html', {
-#         'page_obj': page_obj,
-#         'sort': sort,
-#         'alert_message': alert_message  
-#     })
     
 # 회원 수정
 def adminDetail(request, member_id):
