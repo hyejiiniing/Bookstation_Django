@@ -17,3 +17,4 @@ urlpatterns = [
     path('delete_member/', views.delete_member, name='delete_member'), # 회원 삭제
     path('userInfoChange/', views.userInfoChange, name='userInfoChange'), # 회원 정보 수정
 ]
+
