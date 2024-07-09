@@ -185,5 +185,3 @@ def delete_member(request):
     member = get_object_or_404(Member, pk=member_id)
     member.delete()
     return redirect('adminMember') 
-
-# 혜진
